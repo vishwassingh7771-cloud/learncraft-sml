@@ -13,6 +13,11 @@ require('dotenv').config();
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
 
+// True when a real key is set (the .env.example placeholder starts with YOUR_)
+function isLiveAI() {
+  return Boolean(GEMINI_API_KEY) && !GEMINI_API_KEY.startsWith('YOUR_');
+}
+
 /**
  * Execute a cURL command or HTTP fetch to the Gemini REST API
  * @param {string} prompt - User learning prompt
@@ -21,7 +26,7 @@ const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
  */
 async function callGeminiApi(prompt, systemInstruction = '') {
   // If user provided GEMINI_API_KEY, use the live Google Generative Language API
-  if (GEMINI_API_KEY && GEMINI_API_KEY !== 'YOUR_GEMINI_API_KEY') {
+  if (isLiveAI()) {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
     
     const requestBody = {
@@ -138,5 +143,6 @@ When exploring **${topic}**, think of how complex systems in the world start wit
 
 module.exports = {
   callGeminiApi,
+  isLiveAI,
   callGeminiViaCurlCli
 };

@@ -255,7 +255,7 @@ for i, row in enumerate(tt.rows):
                 run.bold = i == 0
 para(space_after=18)
 para("Under the guidance of", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
-para("Deepti Shakya", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=36)
+para("Ms. Deepti Shakya", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=36)
 para("Department of Computer Science & Engineering", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
 para("School of Computer Science Engineering & Technology", align=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
 para("Bennett University, Greater Noida", align=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
@@ -288,7 +288,7 @@ para("This is to certify that the project titled “LearnCraft AI: Predicting Te
      "supervision as part of the Statistical Machine Learning Lab during the academic year 2026–27.")
 para()
 para("______________________________", align=WD_ALIGN_PARAGRAPH.RIGHT, space_after=0)
-para("Deepti Shakya", bold=True, align=WD_ALIGN_PARAGRAPH.RIGHT, space_after=0)
+para("Ms. Deepti Shakya", bold=True, align=WD_ALIGN_PARAGRAPH.RIGHT, space_after=0)
 para("Statistical Machine Learning Lab", align=WD_ALIGN_PARAGRAPH.RIGHT, space_after=0)
 para("Bennett University", align=WD_ALIGN_PARAGRAPH.RIGHT)
 
@@ -599,18 +599,24 @@ para("We also added a “low confidence” flag. CLEAR passages are 140–200 wo
      "a single sentence the model gave odd answers. Root type-token ratio, for example, depends strongly on "
      "length. Below 80 words the app still shows a prediction but warns that it is unreliable.")
 
-h2("4.7 Screenshots")
-figure(os.path.join(SHOT, "app_home.png"), "Figure 4.2: Main screen of the LearnCraft AI web application",
-       width_cm=12.5)
-p = doc.add_paragraph()
-p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p.paragraph_format.keep_with_next = True
-run = p.add_run()
-run.add_picture(os.path.join(SHOT, "app_inspector.png"), width=Cm(6.3))
-p.add_run("    ")
-p.add_run().add_picture(os.path.join(SHOT, "app_quiz.png"), width=Cm(8.8))
-doc.add_paragraph("Figure 4.3: Readability inspector showing the ML prediction (left) and the Bloom's taxonomy "
-                  "quiz (right)", style="Figure Caption")
+h2("4.7 User Interface")
+para("The mid-term interface was built to show off features, and it read like it: labels such as “Pedagogical "
+     "Scaffolding Tier” and metric cards that were not computed from the lesson at all. For the final version we "
+     "rebuilt it around what a student actually does. The page has two tabs. **Learn a topic** walks through three "
+     "numbered steps (choose, read, test) with large grade buttons, topic suggestions and a plain choice of "
+     "Simpler, Normal or Challenge (Figure 4.2). Every lesson carries a reading-level check from our model, phrased "
+     "as “good fit for Grade 5” rather than a raw score, plus a read-aloud button for weaker readers. The quiz "
+     "only unlocks once all questions are answered. Its result leads to a real next step: a simpler lesson after a "
+     "low score, or the next grade after a perfect one (Figure 4.4). **Check any text** lets a teacher paste any "
+     "passage and see the verdict update while typing, with a Hard-to-Easy meter, concrete tips and the raw "
+     "numbers tucked away under “Details for teachers” (Figure 4.3). The page also works offline with hand-written "
+     "sample lessons, and it says clearly which mode it is in.")
+figure(os.path.join(SHOT, "app_home.png"), "Figure 4.2: Learn tab with an AI-written Grade 5 lesson; the first "
+       "draft was rated too hard and rewritten", width_cm=11.5)
+figure(os.path.join(SHOT, "app_inspector.png"), "Figure 4.3: Check-any-text tab rating a dense passage against "
+       "Grade 6", width_cm=12)
+figure(os.path.join(SHOT, "app_quiz_result.png"), "Figure 4.4: Graded quiz with explanations and the suggested "
+       "next step", width_cm=7)
 
 # =============================================================== CHAPTER 5 ===
 chapter("CHAPTER 5: RESULTS AND DISCUSSION")
@@ -645,7 +651,7 @@ table("Table 5.1: Regression results (lower RMSE/MAE and higher R² are better)"
       ["Model", "Input", "CV RMSE", "Test RMSE", "Test MAE", "Test R²"], rows,
       widths=[5.8, 1.7, 1.8, 1.9, 1.9, 1.8], font=9.5, bold_rows=bold)
 figure(os.path.join(FIG, "04_model_comparison.png"), "Figure 5.2: Test RMSE of all regression models",
-       width_cm=10.5)
+       width_cm=9.5)
 mb = r("Mean baseline")
 para(f"A few things stand out. First, every model beats the Flesch-Kincaid baseline (RMSE {fk.RMSE:.3f}), and "
      f"the mean baseline ({mb.RMSE:.3f}) shows what “no information” looks like. Second, among models that only "
@@ -698,7 +704,7 @@ para(f"Figure 5.3 plots predicted against actual easiness for the best model on 
      f"than they are and the hardest as somewhat easier. This is typical for regularised linear models.")
 figure(os.path.join(FIG, "05_pred_vs_actual.png"),
        "Figure 5.3: Predicted vs actual easiness (left) and residual distribution (right), best model",
-       width_cm=14)
+       width_cm=10)
 eg = M["error_by_genre"]
 para(f"Broken down by genre, the error is a little higher on informational texts (RMSE {eg['Info']:.3f}) than "
      f"on literature ({eg['Lit']:.3f}). We read the eight test passages with the largest errors. Six were "
@@ -721,7 +727,7 @@ para(f"The right half of Figure 5.4 shows how the best model improves with more 
      f"still-falling validation curve suggests more labelled passages would help more than a fancier model.")
 figure_pair(os.path.join(FIG, "06_permutation_importance.png"), os.path.join(FIG, "07_learning_curve.png"),
             "Figure 5.4: Permutation importance for gradient boosting (left) and learning curve of the best "
-            "model (right)", w1=7.3, w2=7.9)
+            "model (right)", w1=6.3, w2=6.8)
 
 h2("5.7 Classification Results")
 para("Table 5.2 shows the three-class results. Chance accuracy is 33.3% because the classes are balanced.")
@@ -739,7 +745,7 @@ para(f"The pattern matches the regression results: text-based models beat featur
      f"continuous scale. Hard passages are confused with Easy ones only rarely ({bc['confusion_matrix'][0][2]} "
      f"of 315), which is the mistake that would hurt a student most.")
 figure(os.path.join(FIG, "09_confusion_matrix.png"), "Figure 5.5: Confusion matrix of the best classifier",
-       width_cm=7.5)
+       width_cm=6.3)
 
 h2("5.8 Unsupervised View: PCA and K-Means")
 pc = M["pca"]
@@ -752,28 +758,21 @@ para(f"Finally, we asked whether difficulty is the main source of variation in t
      f"informational text, and another is mostly fiction with many short paragraphs and a lot of dialogue. Difficulty is real in the feature space, but it is not the dominant structure, which is "
      f"why supervision is needed.")
 figure(os.path.join(FIG, "10_pca_kmeans.png"), "Figure 5.6: PCA projection coloured by true class (left) and by "
-                                               "K-Means cluster (right)", width_cm=14)
+                                               "K-Means cluster (right)", width_cm=11)
 
-h2("5.9 Deployed Model and Comparison with the Literature")
+h2("5.9 Deployed Model and Limitations")
 dl = M["deployed_light_model"]
-para(f"The light Ridge model that runs in the app scored test RMSE {dl['RMSE']:.3f} and R² {dl['R2']:.3f} "
-     f"before being refitted on all data. That is worse than the best text model ({best.RMSE:.3f}) but clearly "
-     f"better than Flesch-Kincaid ({fk.RMSE:.3f}), and it runs in microseconds with no dependencies. We think "
-     f"this is the right trade-off for a classroom tool. If needed, the joblib pipeline could be served from a "
-     f"small Python service later. For context, the winning transformer ensembles in the CommonLit competition "
-     f"reached RMSE around 0.45 on a related target. Our numbers are not directly comparable (different split "
-     f"and slightly different target), but the comparison shows how much headroom deep models still have.")
-
-h2("5.10 Limitations")
-bullets([
-    "The model is trained on 140–200-word passages and is unreliable on single sentences; we flag these "
-    "instead of hiding the problem.",
-    "Our Hard/Medium/Easy to grade-band mapping is approximate; CLEAR does not give a grade per passage.",
-    "The syllable counter is heuristic, so FRE and FKGL values differ slightly from those in the corpus.",
-    "The adaptive loop has only been tested end to end with the offline simulator. It has not been evaluated "
-    "in a study with real students.",
-    "The corpus is mostly US/UK English text; Indian-English or translated textbook passages may behave differently.",
-])
+para(f"The light Ridge model that runs in the app scored test RMSE {dl['RMSE']:.3f} and R² {dl['R2']:.3f}: worse "
+     f"than the best text model ({best.RMSE:.3f}) but clearly better than Flesch-Kincaid ({fk.RMSE:.3f}), and it "
+     f"runs in microseconds with no dependencies, which we think is the right trade-off for a classroom tool. For "
+     f"context, the winning transformer ensembles in the CommonLit competition reached RMSE around 0.45 on a "
+     f"related target, so deep models still have headroom.")
+para("The work has clear limitations. The model is trained on 140–200-word passages and is unreliable on single "
+     "sentences, which the app flags. The Hard/Medium/Easy to grade-band mapping is approximate, because CLEAR "
+     "gives no grade per passage, and the heuristic syllable counter makes our Flesch values differ slightly from "
+     "the corpus. The adaptive loop has been tested with the simulator and a few live Gemini requests (one Grade 5 "
+     "lesson was rewritten after its first draft was rated too hard), but not with real students. Finally, the "
+     "corpus is mostly US/UK English, so Indian or translated textbook passages may behave differently.")
 
 # =============================================================== CHAPTER 6 ===
 chapter("CHAPTER 6: CONCLUSION AND FUTURE SCOPE")

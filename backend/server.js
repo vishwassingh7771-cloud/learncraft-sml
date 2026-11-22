@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { callGeminiApi } = require('./gemini_curl_service');
+const { callGeminiApi, isLiveAI } = require('./gemini_curl_service');
 const { analyzeReadability } = require('./readability_analyzer');
 require('dotenv').config();
 
@@ -38,7 +38,8 @@ app.get('/api/health', (req, res) => {
     status: 'healthy',
     project: 'LearnCraft AI',
     sdgGoal: 'Goal 4: Quality Education',
-    version: '1.0.0-phase2-partial',
+    version: '2.0.0-final',
+    aiMode: isLiveAI() ? 'gemini' : 'simulator',
     timestamp: new Date().toISOString()
   });
 });
@@ -61,6 +62,11 @@ app.post('/api/analyze-reading-level', (req, res) => {
 // Generate Custom Learning Module
 app.post('/api/generate-module', async (req, res) => {
   const { gradeLevel = 7, subject = 'Science', topic, readingLevel = 'Standard', region = 'Global' } = req.body;
+  const levelNote = readingLevel === 'Simpler'
+    ? 'The student finds this hard: use extra-short sentences, everyday words and more analogies.'
+    : readingLevel === 'Challenge'
+      ? 'The student wants a challenge: add precise vocabulary and one extension idea, still readable for the grade.'
+      : 'Pitch the language exactly at the grade level.';
 
   if (!topic) {
     return res.status(400).json({ error: 'Topic is required.' });
@@ -69,7 +75,7 @@ app.post('/api/generate-module', async (req, res) => {
   const systemInstruction = `[SYSTEM INSTRUCTION: LearnCraft AI Pedagogical Engine]
 Target Audience: Grade ${gradeLevel} Student
 Curriculum Domain: ${subject}
-Reading Level Setting: ${readingLevel}
+Reading Level Setting: ${readingLevel} (${levelNote})
 Geographical Context: ${region}
 UN-SDG Focus: Goal 4: Quality Education
 

@@ -28,7 +28,7 @@ A paired t-test over the 5 CV folds against Flesch-Kincaid gives p ≈ 2.6 × 10
 | File | Description |
 |------|-------------|
 | [`LearnCraft_AI_Final_Project_Report.pdf`](LearnCraft_AI_Final_Project_Report.pdf) / [`.docx`](LearnCraft_AI_Final_Project_Report.docx) | Final report (TNR 12, 1.5 spacing, methodology flowchart in Ch. 3) |
-| [`LearnCraft_AI_Final_Presentation.pptx`](LearnCraft_AI_Final_Presentation.pptx) | 14-slide presentation |
+| [`LearnCraft_AI_Final_Presentation.pptx`](LearnCraft_AI_Final_Presentation.pptx) | 15-slide presentation |
 | [`results/`](results) | `metrics.json`, result tables (CSV), all figures, app screenshots |
 | [`models/`](models) | Trained models (`best_regressor.joblib`, `ridge_features.json`) |
 | [`midterm/`](midterm) | Mid-term submission, kept unchanged for reference |
@@ -64,8 +64,8 @@ dataset/                 CLEAR corpus + extracted features (see dataset/README.m
 models/                  trained models
 results/                 metrics.json, CSV tables, figures/, screenshots/
 backend/                 Express API + Gemini integration + adaptive regeneration loop
-frontend/                Next.js 14 page
-index.html               zero-install demo (open in a browser)
+frontend/                older Next.js version of the UI (index.html is the main, up-to-date UI)
+index.html               the app: Learn tab + Check-any-text tab (open in a browser)
 scripts/                 generate the report, slides, flowchart and architecture diagram
 midterm/                 mid-term deliverables (synthetic data, kept for reference only)
 ```

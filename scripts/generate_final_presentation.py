@@ -81,7 +81,7 @@ text(s, 0.9, 2.6, 11.5, 1.4, "Predicting text readability with statistical machi
 text(s, 0.9, 4.3, 11.5, 0.5, "Statistical Machine Learning Lab  •  Milestone 3: Final Project", 18, False,
      RGBColor(0xF3, 0xC9, 0x9B))
 text(s, 0.9, 5.2, 11.5, 1.2, ["Vishwas Singh (S25CSEU0018)  •  Yagnesh (S25CSEU0031)  •  Kushal (S25CSEU0016)",
-                              "Bennett University  •  Under the guidance of Deepti Shakya"], 16, False, WHITE)
+                              "Bennett University  •  Under the guidance of Ms. Deepti Shakya"], 16, False, WHITE)
 
 # 2 Problem
 s = slide("The problem")
@@ -91,7 +91,7 @@ bullets(s, ["One textbook, thirty different reading levels in a class",
             "Mid-term used the Flesch-Kincaid formula, which only counts sentence length and syllables",
             "Goal: a model that matches human difficulty judgements better and is light enough to run in the app"],
         w=7.2)
-pic(s, os.path.join(SHOT, "app_inspector.png"), 8.6, 1.4, h=5.2)
+pic(s, os.path.join(SHOT, "app_inspector.png"), 7.95, 2.2, w=5.0)
 
 # 3 Objectives / SDG
 s = slide("Objectives and SDG 4 link")
@@ -203,7 +203,17 @@ bullets(s, ["Light Ridge model on 19 features exported as JSON (test RMSE "
             "Too hard → server asks Gemini once more for simpler wording",
             "< 80 words → low-confidence flag"], x=8.2, y=1.4, w=4.8, size=16)
 
-# 14 Conclusion
+# 14 Redesigned app
+s = slide("The app: built for students, not for demos")
+pic(s, os.path.join(SHOT, "app_home.png"), 0.4, 1.25, w=7.9)
+pic(s, os.path.join(SHOT, "app_quiz_result.png"), 8.5, 1.25, h=3.6)
+bullets(s, ["Three clear steps: choose → read → test",
+            "Every lesson gets a plain-language check: “Good fit for Grade 5”",
+            "Read-aloud button; Simpler / Normal / Challenge",
+            "Quiz result leads somewhere: simpler lesson or next grade",
+            "Works offline with sample lessons"], x=8.4, y=4.95, w=4.8, size=13)
+
+# 15 Conclusion
 s = slide("Conclusion and future work")
 bullets(s, [f"RMSE {fk.RMSE:.3f} → {best.RMSE:.3f} and R² {fk.R2:.2f} → {best.R2:.2f} over Flesch-Kincaid on "
             "real teacher-rated data",
