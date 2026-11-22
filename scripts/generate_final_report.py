@@ -255,7 +255,7 @@ for i, row in enumerate(tt.rows):
                 run.bold = i == 0
 para(space_after=18)
 para("Under the guidance of", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
-para("[Faculty Name]", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=36)
+para("Deepti Shakya", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=36)
 para("Department of Computer Science & Engineering", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
 para("School of Computer Science Engineering & Technology", align=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
 para("Bennett University, Greater Noida", align=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
@@ -288,7 +288,7 @@ para("This is to certify that the project titled “LearnCraft AI: Predicting Te
      "supervision as part of the Statistical Machine Learning Lab during the academic year 2026–27.")
 para()
 para("______________________________", align=WD_ALIGN_PARAGRAPH.RIGHT, space_after=0)
-para("[Faculty Name]", bold=True, align=WD_ALIGN_PARAGRAPH.RIGHT, space_after=0)
+para("Deepti Shakya", bold=True, align=WD_ALIGN_PARAGRAPH.RIGHT, space_after=0)
 para("Statistical Machine Learning Lab", align=WD_ALIGN_PARAGRAPH.RIGHT, space_after=0)
 para("Bennett University", align=WD_ALIGN_PARAGRAPH.RIGHT)
 

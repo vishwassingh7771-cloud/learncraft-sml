@@ -81,7 +81,7 @@ text(s, 0.9, 2.6, 11.5, 1.4, "Predicting text readability with statistical machi
 text(s, 0.9, 4.3, 11.5, 0.5, "Statistical Machine Learning Lab  •  Milestone 3: Final Project", 18, False,
      RGBColor(0xF3, 0xC9, 0x9B))
 text(s, 0.9, 5.2, 11.5, 1.2, ["Vishwas Singh (S25CSEU0018)  •  Yagnesh (S25CSEU0031)  •  Kushal (S25CSEU0016)",
-                              "Bennett University  •  Under the guidance of [Faculty Name]"], 16, False, WHITE)
+                              "Bennett University  •  Under the guidance of Deepti Shakya"], 16, False, WHITE)
 
 # 2 Problem
 s = slide("The problem")

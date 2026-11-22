@@ -12,7 +12,7 @@ What goes in each field of the Google Form, plus a script for the demo video.
 | 9 | Demo video link (must be open) | Upload the recording to YouTube (Unlisted) or Google Drive ("Anyone with the link can view"), then paste the link |
 
 Before uploading the report:
-- [ ] Replace **[Faculty Name]** on the title page, certificate and slide 1.
+- [x] Faculty name (Deepti Shakya) is on the title page, certificate and slide 1.
 - [ ] Sign the declaration table.
 - [ ] Run your plagiarism check. Everything is written from scratch; only the references are standard text.
 
