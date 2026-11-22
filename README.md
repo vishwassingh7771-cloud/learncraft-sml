@@ -31,7 +31,7 @@ A paired t-test over the 5 CV folds against Flesch-Kincaid gives p ≈ 2.6 × 10
 | [`LearnCraft_AI_Final_Presentation.pptx`](LearnCraft_AI_Final_Presentation.pptx) | 15-slide presentation |
 | [`results/`](results) | `metrics.json`, result tables (CSV), all figures, app screenshots |
 | [`models/`](models) | Trained models (`best_regressor.joblib`, `ridge_features.json`) |
-| [`midterm/`](midterm) | Mid-term submission, kept unchanged for reference |
+| [`midterm/`](midterm) | Mid-term report, slides and EDA (PDF), kept for reference |
 
 ## Methodology
 
@@ -58,16 +58,17 @@ ml/
   train.py               trains every model, writes results/ and models/
   check_js_parity.js     verifies the JS port matches Python
 shared/
-  readability_ml.js      feature extractor + Ridge predictor (Node and browser)
+  readability_ml.js      feature extractor + Ridge predictor (Node, browser, Next.js)
   ridge_model.js         exported model for the zero-install demo page
+  learncraft_content.js  sample lessons/quizzes and UI helpers used by both front ends
 dataset/                 CLEAR corpus + extracted features (see dataset/README.md)
 models/                  trained models
 results/                 metrics.json, CSV tables, figures/, screenshots/
 backend/                 Express API + Gemini integration + adaptive regeneration loop
-frontend/                older Next.js version of the UI (index.html is the main, up-to-date UI)
-index.html               the app: Learn tab + Check-any-text tab (open in a browser)
+index.html               the app, zero-install: Learn tab + Check-any-text tab (open in a browser)
+frontend/                the same app in Next.js 14 + Tailwind (imports ../shared and ../models)
 scripts/                 generate the report, slides, flowchart and architecture diagram
-midterm/                 mid-term deliverables (synthetic data, kept for reference only)
+midterm/                 mid-term report, slides and EDA PDF, kept for reference
 ```
 
 ## How to run
@@ -86,6 +87,14 @@ npm install
 node server.js          # http://localhost:5000
 ```
 Then open `index.html` in a browser (or double-click `start_demo.bat` on Windows).
+
+Prefer the Next.js version? It has the same features:
+```bash
+cd frontend
+npm install
+npm run dev             # http://localhost:3000
+```
+Set `NEXT_PUBLIC_API_URL` if the backend is not on `http://localhost:5000`.
 A Gemini key is optional: copy `backend/.env.example` to `backend/.env` and set `GEMINI_API_KEY`.
 Without a key the backend uses a built-in simulator, so everything still works offline.
 

@@ -10,7 +10,7 @@ import os
 from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "results", "screenshots")
+OUT = os.environ.get("LC_SHOT_DIR", os.path.join(ROOT, "results", "screenshots"))
 URL = "http://localhost:8765/index.html"
 os.makedirs(OUT, exist_ok=True)
 
@@ -44,6 +44,14 @@ with sync_playwright() as p:
     page.click(f"#q2o{(right[2] + 1) % 4}")
     page.click("#btnCheck")
     page.locator("#quizCard").screenshot(path=os.path.join(OUT, "app_quiz.png"))
+    # tighter crop for the report: last question + result box
+    page.locator("#questions fieldset").last.scroll_into_view_if_needed()
+    box_q = page.locator("#questions fieldset").last.bounding_box()
+    box_r = page.locator("#quizResult").bounding_box()
+    sy = page.evaluate("window.scrollY")       # bounding boxes are viewport-relative
+    page.screenshot(path=os.path.join(OUT, "app_quiz_result.png"), full_page=True, clip={
+        "x": box_q["x"] - 12, "y": box_q["y"] + sy - 12, "width": box_q["width"] + 24,
+        "height": box_r["y"] + box_r["height"] - box_q["y"] + 24})
 
     # 3. Check-any-text tab with the hard sample
     page.click("#tabCheck")

@@ -1,18 +1,18 @@
+import { Atkinson_Hyperlegible, Plus_Jakarta_Sans } from 'next/font/google';
+import './globals.css';
+
+const body = Atkinson_Hyperlegible({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-body' });
+const display = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-display' });
+
 export const metadata = {
-  title: 'LearnCraft AI - Personalized Study Assistant',
-  description: 'AI-powered study assistant generating tailored curriculum modules and quizzes aligned with UN-SDG Goal 4.',
+  title: 'LearnCraft AI',
+  description: 'Learn any topic at your reading level, then test yourself.',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-      </head>
-      <body className="bg-slate-900 text-slate-100 min-h-screen">
-        {children}
-      </body>
+    <html lang="en" className={`${body.variable} ${display.variable}`}>
+      <body className="bg-slate-50 text-slate-800 min-h-screen font-sans">{children}</body>
     </html>
   );
 }

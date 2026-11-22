@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1, h2, h3 { font-family: var(--font-display), system-ui, sans-serif; }
+:focus-visible { outline: 3px solid #6366f1; outline-offset: 2px; border-radius: .5rem; }
+
+.fade-in { animation: fadeIn .25s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.skeleton { background: linear-gradient(90deg,#eef2f7 25%,#f6f8fb 50%,#eef2f7 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; border-radius: .5rem; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .fade-in, .skeleton { animation: none; } }
+
+.lesson p { margin-bottom: .75rem; }
+.lesson ul { list-style: disc; padding-left: 1.25rem; margin-bottom: .75rem; }
+.lesson li { margin-bottom: .35rem; }
+.lesson h3 { font-size: 1.05rem; font-weight: 700; color: #1e3a8a; margin: 1rem 0 .4rem; }
+.lesson strong { color: #0f172a; }
+
+@media print {
+  header, .no-print, aside, #quiz { display: none !important; }
+  body { background: #fff; }
+}
