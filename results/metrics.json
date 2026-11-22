@@ -1,0 +1,413 @@
+{
+  "data": {
+    "rows_raw": 4724,
+    "rows_clean": 4723,
+    "lit": 2419,
+    "info": 2304,
+    "tertile_cuts": [
+      -1.407267637,
+      -0.462694167
+    ],
+    "target_stats": {
+      "count": 4723.0,
+      "mean": -0.9574633016241796,
+      "std": 1.03369557706223,
+      "min": -3.676267773,
+      "25%": -1.696136383,
+      "50%": -0.909047164,
+      "75%": -0.20334804,
+      "max": 1.711389827
+    }
+  },
+  "feature_correlations": {
+    "flesch_kincaid_grade": -0.48272030048156417,
+    "pct_long_words": -0.4670160361345661,
+    "avg_syllables": -0.45166447252679526,
+    "pct_complex_words": -0.4503322289901845,
+    "avg_word_len": -0.416877718634196,
+    "max_sentence_len": -0.35126987775772156,
+    "avg_sentence_len": -0.3227885501438811,
+    "sd_sentence_len": -0.3117195755321117,
+    "commas_per_sentence": -0.24719385450713569,
+    "root_ttr": -0.22914505005589778,
+    "type_token_ratio": -0.19067427366348058,
+    "semicolons_colons": -0.1549280049845254,
+    "n_words": -0.08326014336846209,
+    "pct_common_words": 0.15438365587269978,
+    "n_paragraphs": 0.24987020414895134,
+    "quote_density": 0.25188750368173424,
+    "n_sentences": 0.3224605492408114,
+    "pct_monosyllabic": 0.4171998148316966,
+    "flesch_reading_ease": 0.5322276897423164
+  },
+  "split": {
+    "train": 3778,
+    "test": 945
+  },
+  "tuning": {
+    "Features + TF-IDF + Ridge": {
+      "best_params": {
+        "m__alpha": 0.5
+      },
+      "cv_rmse": 0.664495559510988,
+      "grid": {
+        "0.5": 0.664495559510988,
+        "1.0": 0.6699396452765396,
+        "1.5": 0.6773584570413957,
+        "3.0": 0.6979492848608648,
+        "6.0": 0.7260384050971662
+      }
+    },
+    "Gradient Boosting": {
+      "best_params": {
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "n_estimators": 300
+      },
+      "cv_rmse": 0.7886602815663115
+    },
+    "SVR (RBF)": {
+      "best_params": {
+        "m__C": 3,
+        "m__epsilon": 0.3,
+        "m__gamma": 0.02
+      },
+      "cv_rmse": 0.7779467019451387
+    }
+  },
+  "regression": [
+    {
+      "Model": "Mean baseline",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 1.0279,
+      "CV SD": 0.0304,
+      "RMSE": 1.0554,
+      "MAE": 0.8628,
+      "R2": -0.0
+    },
+    {
+      "Model": "FKGL only (linear)",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.8981,
+      "CV SD": 0.0159,
+      "RMSE": 0.9358,
+      "MAE": 0.747,
+      "R2": 0.2137
+    },
+    {
+      "Model": "Linear Regression",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.8183,
+      "CV SD": 0.0169,
+      "RMSE": 0.8489,
+      "MAE": 0.6767,
+      "R2": 0.353
+    },
+    {
+      "Model": "Ridge",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.8182,
+      "CV SD": 0.0168,
+      "RMSE": 0.8489,
+      "MAE": 0.6767,
+      "R2": 0.3529
+    },
+    {
+      "Model": "Lasso",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.8226,
+      "CV SD": 0.0178,
+      "RMSE": 0.8533,
+      "MAE": 0.6791,
+      "R2": 0.3462
+    },
+    {
+      "Model": "Elastic Net",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.8202,
+      "CV SD": 0.0172,
+      "RMSE": 0.8516,
+      "MAE": 0.6776,
+      "R2": 0.3489
+    },
+    {
+      "Model": "KNN (k=15)",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.8191,
+      "CV SD": 0.0203,
+      "RMSE": 0.8462,
+      "MAE": 0.6702,
+      "R2": 0.3571
+    },
+    {
+      "Model": "Decision Tree",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.869,
+      "CV SD": 0.0215,
+      "RMSE": 0.8902,
+      "MAE": 0.7119,
+      "R2": 0.2884
+    },
+    {
+      "Model": "SVR (RBF)",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.7839,
+      "CV SD": 0.0147,
+      "RMSE": 0.815,
+      "MAE": 0.6466,
+      "R2": 0.4037
+    },
+    {
+      "Model": "Random Forest",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.7949,
+      "CV SD": 0.0204,
+      "RMSE": 0.8202,
+      "MAE": 0.6501,
+      "R2": 0.3959
+    },
+    {
+      "Model": "Gradient Boosting",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.7907,
+      "CV SD": 0.0196,
+      "RMSE": 0.8189,
+      "MAE": 0.6468,
+      "R2": 0.398
+    },
+    {
+      "Model": "TF-IDF words + Ridge",
+      "Input": "Raw text",
+      "CV RMSE": 0.7191,
+      "CV SD": 0.0131,
+      "RMSE": 0.7208,
+      "MAE": 0.5807,
+      "R2": 0.5335
+    },
+    {
+      "Model": "TF-IDF chars + Ridge",
+      "Input": "Raw text",
+      "CV RMSE": 0.6871,
+      "CV SD": 0.0058,
+      "RMSE": 0.6953,
+      "MAE": 0.5577,
+      "R2": 0.566
+    },
+    {
+      "Model": "Features + TF-IDF + Ridge",
+      "Input": "Raw text",
+      "CV RMSE": 0.6774,
+      "CV SD": 0.0085,
+      "RMSE": 0.684,
+      "MAE": 0.5462,
+      "R2": 0.5799
+    },
+    {
+      "Model": "Features + TF-IDF + Ridge (tuned)",
+      "Input": "Raw text",
+      "CV RMSE": 0.6645,
+      "CV SD": NaN,
+      "RMSE": 0.6753,
+      "MAE": 0.5414,
+      "R2": 0.5906
+    },
+    {
+      "Model": "Gradient Boosting (tuned)",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.7887,
+      "CV SD": NaN,
+      "RMSE": 0.8161,
+      "MAE": 0.6471,
+      "R2": 0.402
+    },
+    {
+      "Model": "SVR (tuned)",
+      "Input": "Hand-crafted features",
+      "CV RMSE": 0.7779,
+      "CV SD": NaN,
+      "RMSE": 0.8114,
+      "MAE": 0.6412,
+      "R2": 0.4089
+    },
+    {
+      "Model": "Ensemble (0.6 text Ridge + 0.4 GBR)",
+      "Input": "Both",
+      "CV RMSE": NaN,
+      "CV SD": NaN,
+      "RMSE": 0.7,
+      "MAE": 0.5577,
+      "R2": 0.56
+    }
+  ],
+  "ttest_text_vs_fkgl": {
+    "t": -38.970602047138684,
+    "p": 2.5899940750461357e-06,
+    "fold_rmse_text": [
+      0.6721833846985089,
+      0.6771267548595499,
+      0.6828153499123336,
+      0.6895959253395761,
+      0.66507087039701
+    ],
+    "fold_rmse_fkgl": [
+      0.9008333203804946,
+      0.8817799321881449,
+      0.919849054178982,
+      0.909732201001195,
+      0.8784201911672264
+    ]
+  },
+  "ttest_gbr_vs_fkgl": {
+    "t": -35.822749293516836,
+    "p": 3.6246224082988984e-06
+  },
+  "residuals": {
+    "mean": 0.01258736758083725,
+    "sd": 0.6751495767172344,
+    "shapiro_p_sample500": 0.39289342749943423
+  },
+  "error_by_genre": {
+    "Lit": 0.6568219985473481,
+    "Info": 0.694663997494087
+  },
+  "permutation_importance_gbr": {
+    "type_token_ratio": -0.0005471003379826534,
+    "max_sentence_len": 0.00010096485427205649,
+    "n_sentences": 0.0009339901499270664,
+    "pct_monosyllabic": 0.0013904145251108502,
+    "flesch_kincaid_grade": 0.0014907925409830436,
+    "commas_per_sentence": 0.0019460493195893268,
+    "quote_density": 0.0036601932452019923,
+    "avg_syllables": 0.008111969706744559,
+    "pct_common_words": 0.009886107329680038,
+    "n_words": 0.011729013115375164,
+    "n_paragraphs": 0.01963415618967863,
+    "avg_sentence_len": 0.019869023749119596,
+    "root_ttr": 0.02019503234188824,
+    "semicolons_colons": 0.02080862064968183,
+    "avg_word_len": 0.02370876653929188,
+    "pct_complex_words": 0.04684474746920457,
+    "sd_sentence_len": 0.062116659316379275,
+    "pct_long_words": 0.09529578879942796,
+    "flesch_reading_ease": 0.16998477370227802
+  },
+  "learning_curve": {
+    "sizes": [
+      302,
+      846,
+      1390,
+      1934,
+      2478,
+      3022
+    ],
+    "train": [
+      0.26835907757906197,
+      0.2527939966665601,
+      0.2522196767267014,
+      0.2522269369044436,
+      0.24996034592292773,
+      0.24874205319630463
+    ],
+    "val": [
+      0.7780497589066321,
+      0.7235316657995325,
+      0.6976168821539087,
+      0.6823192998465539,
+      0.6722278689995987,
+      0.6645409254601965
+    ]
+  },
+  "classification": [
+    {
+      "Model": "Logistic Regression (features)",
+      "Accuracy": 0.581,
+      "Macro F1": 0.5744
+    },
+    {
+      "Model": "Random Forest (features)",
+      "Accuracy": 0.545,
+      "Macro F1": 0.5411
+    },
+    {
+      "Model": "Multinomial Naive Bayes (TF-IDF)",
+      "Accuracy": 0.5873,
+      "Macro F1": 0.5762
+    },
+    {
+      "Model": "Linear SVM (TF-IDF)",
+      "Accuracy": 0.6085,
+      "Macro F1": 0.6012
+    },
+    {
+      "Model": "Logistic Regression (features + TF-IDF)",
+      "Accuracy": 0.6328,
+      "Macro F1": 0.6305
+    }
+  ],
+  "best_classifier": {
+    "name": "Logistic Regression (features + TF-IDF)",
+    "confusion_matrix": [
+      [
+        225,
+        72,
+        18
+      ],
+      [
+        92,
+        148,
+        75
+      ],
+      [
+        16,
+        74,
+        225
+      ]
+    ],
+    "report": {
+      "Hard": {
+        "precision": 0.6756756756756757,
+        "recall": 0.7142857142857143,
+        "f1-score": 0.6944444444444444,
+        "support": 315.0
+      },
+      "Medium": {
+        "precision": 0.5034013605442177,
+        "recall": 0.46984126984126984,
+        "f1-score": 0.4860426929392447,
+        "support": 315.0
+      },
+      "Easy": {
+        "precision": 0.7075471698113207,
+        "recall": 0.7142857142857143,
+        "f1-score": 0.7109004739336493,
+        "support": 315.0
+      },
+      "accuracy": 0.6328042328042328,
+      "macro avg": {
+        "precision": 0.628874735343738,
+        "recall": 0.6328042328042328,
+        "f1-score": 0.6304625371057795,
+        "support": 945.0
+      },
+      "weighted avg": {
+        "precision": 0.6288747353437381,
+        "recall": 0.6328042328042328,
+        "f1-score": 0.6304625371057795,
+        "support": 945.0
+      }
+    }
+  },
+  "pca": {
+    "explained_variance": [
+      0.3796434230198385,
+      0.24349929342753004
+    ],
+    "kmeans_ari_vs_difficulty": 0.09950140585236937
+  },
+  "deployed_light_model": {
+    "RMSE": 0.8489328769927865,
+    "MAE": 0.6766626683214584,
+    "R2": 0.35292718088103026
+  },
+  "runtime_sec": 369.7
+}
